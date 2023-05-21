@@ -28,23 +28,19 @@ const InputPattern = styled.input`
 `;
 
 export const InputName = styled(InputPattern)`
-  /* border: 1px solid rgba(255, 0, 0, 0.25);
-  box-shadow: 0px 4px 24px rgba(255, 0, 0, 0.12); */
+
 `;
 
 export const InputEmail = styled(InputPattern)`
-  /* border: 1px solid rgba(255, 0, 0, 0.25);
-  box-shadow: 0px 4px 24px rgba(255, 0, 0, 0.12); */
+
 `;
 
 export const InputPassword= styled(InputPattern)`
-  /* border: 1px solid rgba(255, 0, 0, 0.25);
-  box-shadow: 0px 4px 24px rgba(255, 0, 0, 0.12); */
+
 `;
 
 export const InputConfirmPassowd = styled(InputPattern)`
-  /* border: 1px solid rgba(255, 0, 0, 0.25);
-  box-shadow: 0px 4px 24px rgba(255, 0, 0, 0.12); */
+
 `;
 
 export const SubmitButton = styled.button`
