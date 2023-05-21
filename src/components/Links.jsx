@@ -2,9 +2,10 @@ import { ShortedList, ShortedLink,ShortDiv,UrlDiv,ViewsDiv, DeleteUrlButton, Tra
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from './ConfirmationModal.jsx';
-export default function Links({shortenedLinks, deleteLink, openUrl}){
+import { useNavigate } from 'react-router-dom';
+export default function Links({shortenedLinks, deleteLink}){
 	function copyToClipBoard(shortUrl){
-		navigator.clipboard.writeText(`${process.env.REACT_APP_APPURL}/${shortUrl}`);
+		navigator.clipboard.writeText(`${process.env.REACT_APP_APPURL}/r/${shortUrl}`);
 		const customId = 'custom-id-copied';
 		toast.success('Link copiado para a área de transferência', {toastId:customId});
 	}
@@ -18,7 +19,9 @@ export default function Links({shortenedLinks, deleteLink, openUrl}){
 					<ConfirmationModal
 						message="Você será redirecionado..."
 						onConfirm={()=>{
-							openUrl(shortUrl);
+							const newWindow = window.open(`/r/${shortUrl}`, '_blank');
+							newWindow.opener = null;
+							newWindow.focus();
 							toast.dismiss();
 						}}
 						onCancel={() => handleCancel(customId)}

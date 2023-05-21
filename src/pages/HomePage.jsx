@@ -77,16 +77,6 @@ export default function HomePage(){
 		}
 	}
 
-	async function openUrl(urlId){
-		try {
-			const response = await api.sync(urlId);
-			const url = (response.split(' '))[3];
-			getMyData();
-			window.open(url, '_blank');
-		} catch (error) {
-			alert(error.data.message);
-		}
-	}
 	return(
 		<>
 			<ToastContainer
@@ -115,7 +105,6 @@ export default function HomePage(){
 			<Links 
 				shortenedLinks = {shortenedLinks}
 				deleteLink = {deleteLink}
-				openUrl = {openUrl}
 			/>
 		</>
 	);

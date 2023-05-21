@@ -11,6 +11,7 @@ import UserContext from './context/userDataContext.js';
 import { useState } from 'react';
 import HomePage from './pages/HomePage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
+import RedirectPage from './pages/RedirectPage.jsx';
 export default function App() {
 	const [header, setHeader] = useState(null);
 	const [userData, setUserData] = useState(null);
@@ -30,6 +31,7 @@ export default function App() {
 							<Route path='/signin' element={<SignInPage />} />
 							<Route path='/' element={<RankingPage />} />
 							<Route path='/profile' element={<HomePage />} />
+							<Route path='/r/:shortUrl' element={<RedirectPage />} />
 						</Routes>
 					</Container>
 				</BrowserRouter>
