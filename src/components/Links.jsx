@@ -5,7 +5,7 @@ import ConfirmationModal from './ConfirmationModal.jsx';
 import { useNavigate } from 'react-router-dom';
 export default function Links({shortenedLinks, deleteLink}){
 	function copyToClipBoard(shortUrl){
-		navigator.clipboard.writeText(`${process.env.REACT_APP_APPURL}/r/${shortUrl}`);
+		navigator.clipboard.writeText(`${process.env.REACT_APP_APPURL}r/${shortUrl}`);
 		const customId = 'custom-id-copied';
 		toast.success('Link copiado para a área de transferência', {toastId:customId});
 	}
