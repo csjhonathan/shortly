@@ -36,7 +36,7 @@ export default function Links({shortenedLinks, deleteLink}){
 				message="Deseja deletar seu link?"
 				onConfirm={()=>{
 					deleteLink(id);
-					toast.dismiss();
+					toast.dismiss(customId);
 				}}
 				onCancel={() => handleCancel(customId)}
 			/>,

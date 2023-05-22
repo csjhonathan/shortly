@@ -18,7 +18,7 @@ export default function HomePage(){
 	const [shortenedLinks, setShortenedLinks] = useState([]);
 	const navigate = useNavigate();
 	const [_logout, setLogout] = UseLogout(false);
-	const {register, handleSubmit} = useForm();
+	const {register, handleSubmit, setValue} = useForm();
 	useEffect(() => {
 		getMyData();
 	},[]);
@@ -44,6 +44,7 @@ export default function HomePage(){
 	}
 	async function submitLink(data){
 		const customId = 'custom-id-created';
+		setValue('link', '');
 		try {
 			const loadingToast = toast.promise((api.create(data.link)), {
 				pending: 'Encurtando sua url...',
@@ -58,13 +59,14 @@ export default function HomePage(){
 	}
 
 	async function deleteLink(urlId){
+		const customId = 'custom-id-deleting';
 		try {
-			const loadingToast = toast.promise((api.deleteUrl(urlId)), {
+			const deleteLoadingToast = toast.promise((api.deleteUrl(urlId)), {
 				pending: 'Deletando sua url...',
 				success: 'Url deletada com sucesso!',
 				error: 'Houve um erro ao tentar deletar o link!',
-			});
-			await loadingToast;
+			}, {toastId:customId});
+			await deleteLoadingToast;
 			getMyData();
 		} catch (error) {
 			alert(error.data.message);
