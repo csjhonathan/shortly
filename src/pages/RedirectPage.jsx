@@ -27,7 +27,7 @@ export default function RedirectPage(){
 		try {
 			await api.sync(shortUrl);
 		} catch (error) {
-			if(error.status === 404){
+			if(error?.status === 404){
 				alert('Url não encontrada! Esta página será fechada!');
 				return window.close();
 			}

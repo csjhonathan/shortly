@@ -9,7 +9,7 @@ export default function Links({shortenedLinks, deleteLink}){
 		const customId = 'custom-id-copied';
 		toast.success('Link copiado para a área de transferência', {toastId:customId});
 	}
-	function showModal({id, shortUrl}){
+	function showModal({id, shortUrl, url}){
 		
 		const customId = 'custom-id-confirmModal';
 
@@ -75,7 +75,10 @@ export default function Links({shortenedLinks, deleteLink}){
 				return(
 					<ShortedLink key={id}>
 						<UrlDiv>{url}</UrlDiv>
-						<ShortDiv onClick={()=> showModal({shortUrl})}>{shortUrl}</ShortDiv><ClipBoard onClick={()=>copyToClipBoard(shortUrl)}/>
+						<ShortDiv 
+							onClick={()=> showModal({shortUrl})}
+						>{shortUrl}</ShortDiv>
+						<ClipBoard onClick={()=>copyToClipBoard(shortUrl)}/>
 						<ViewsDiv>{`Quantidade de visitantes: ${visitCount}`}</ViewsDiv>
 						<DeleteUrlButton onClick={()=> showModal({id})}>
 							<TrashIcon/>
