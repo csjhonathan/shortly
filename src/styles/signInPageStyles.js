@@ -61,3 +61,9 @@ export const RedirectButton = styled.button`
   color: ${({color}) => color ? color : '#9C9C9C' };
   text-decoration:${({underline}) => underline};
 `;
+
+export const KeeploggedArea = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;

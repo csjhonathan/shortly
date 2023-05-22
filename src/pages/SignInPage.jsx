@@ -7,7 +7,8 @@ import {
 	InputPassword, 
 	Logo, 
 	RedirectButton, 
-	SubmitButton
+	SubmitButton,
+	KeeploggedArea
 } from '../styles/signInPageStyles.js';
 import { useContext, useEffect } from 'react';
 import HeaderContext from '../context/headerContext.js';
@@ -27,11 +28,13 @@ export default function SignInPage(){
 	}, []);
 	
 	async function sendForm (data) {
-		const {email, password} = data;
-    
+		const {email, password, keeplogged} = data;
 		try {
 			const {token} = await api.sync(email, password);
-			localStorage.setItem('token', JSON.stringify(token));
+			if(keeplogged){
+				localStorage.setItem('token', JSON.stringify(token));
+			}
+			sessionStorage.setItem('token', JSON.stringify(token));
 			navigate('/profile');
 		} catch (error) {
 			alert(error.data.message);
@@ -55,6 +58,14 @@ export default function SignInPage(){
 					required
 					{...register('password')}
 				/>
+				<KeeploggedArea>
+					<label htmlFor="keeplogged">Manter login?</label>
+					<input 
+						type='checkbox'
+						name='keeplogged'
+						{...register('keeplogged')}
+					/>
+				</KeeploggedArea>
 				<SubmitButton>Entrar</SubmitButton>
 			</FormArea>
     

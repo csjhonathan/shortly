@@ -22,13 +22,17 @@ export default function RedirectPage(){
 
 		if(!timer) window.location.href = url;
 	}, [timer]);
+
 	async function getUrl(shortUrl){
 		try {
-			const response = await api.sync(shortUrl);
-			const url = (response.split(' '))[3];
-			setUrl(url);
+			await api.sync(shortUrl);
 		} catch (error) {
-			alert(error.data);
+			if(error.status === 404){
+				alert('Url não encontrada! Esta página será fechada!');
+				return window.close();
+			}
+		} finally {
+			setUrl(`${process.env.REACT_APP_API_URL}/urls/open/${shortUrl}`);
 		}
 	}
 	return(
